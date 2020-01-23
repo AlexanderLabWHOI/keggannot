@@ -1,0 +1,10 @@
+README.md
+setup.py
+Keggannot.egg-info/PKG-INFO
+Keggannot.egg-info/SOURCES.txt
+Keggannot.egg-info/dependency_links.txt
+Keggannot.egg-info/top_level.txt
+bin/keggannot_genes2ko
+keggannot/__init__.py
+keggannot/_version.py
+keggannot/annot.py
