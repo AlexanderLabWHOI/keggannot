@@ -297,10 +297,11 @@ class KEGGAnnotator(object):
         answer = set()
         if kos:
             for ko in kos:
-                try:
-                    answer.update(self.ko2pathways[ko])
-                except KeyError:
-                    pass
+                if ko.startswith('k'):
+                    try:
+                        answer.update(self.ko2pathways[ko])
+                    except KeyError:
+                        pass
         if len(answer):
             return sorted(answer)
         else:
@@ -385,6 +386,7 @@ class KEGGAnnotator(object):
         
         # Build pathway list
         pathways = self.get_hit_pathway_list(kos)
+        print(pathways)
         if pathways:
             out["pathways"] = pathways
             out["pathway_names"] = [self.pathways[p]["name"] for p in pathways]
