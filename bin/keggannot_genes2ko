@@ -41,7 +41,7 @@ if __name__ == "__main__":
     else:
         loglevel = logging.INFO
     FORMAT = "%(asctime)-15s %(message)s"
-    logging.basicConfig(format=FORMAT, datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
+    logging.basicConfig(stream = sys.stdout, format=FORMAT, datefmt='%Y-%m-%d %H:%M:%S', level=loglevel)
     
     if not (args.kegg_dir and args.blast_file):
         sys.stderr.write("Error: arguments kegg_dir and blast_file are required\n\n")
