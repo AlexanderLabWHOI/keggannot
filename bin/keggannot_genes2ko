@@ -28,6 +28,7 @@ if __name__ == "__main__":
                    help="Only use hits with a defined module")
     p.add_argument("kegg_dir", nargs="?", help="KEGG data directory")
     p.add_argument("blast_file", nargs="?", help="Tabular blast results file")
+    p.add_argument("-o", "--output", help="outfile with kegg annotations")
     args = p.parse_args()
 
     if args.version:
@@ -60,6 +61,8 @@ if __name__ == "__main__":
                            open(os.path.join(args.kegg_dir, "module/module")),
                            open(os.path.join(args.kegg_dir, "pathway/pathway")),
                            opener(args.blast_file), args.module)
-    
-    for line in kannot.make_basic_report_text():
-        print(line)
+    with open(args.output, 'w') as f:
+        for line in kannot.make_basic_report_text():
+            f.write(line)
+            f.write('\n')
+    f.close()
