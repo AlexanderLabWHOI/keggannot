@@ -374,9 +374,15 @@ class KEGGAnnotator(object):
         out = {}
         if kos:
             out["kos"] = kos
-            out["ko_names"] = [self.kos[k]["name"] for k in kos]
-            out["ko_defs"] = [self.kos[k]["def"] for k in kos]
-        
+            out["ko_names"]=[]
+            out["ko_defs"]=[]
+            for k in kos:
+                if k in self.kos.keys():
+                    out["ko_names"].append(self.kos[k]["name"])
+                    out["ko_defs"].append(self.kos[k]["def"])
+                else:
+                    out["ko_names"].append('None')
+                    out["ko_defs"].append('None')
         # Build module list
         modules = self.get_hit_module_list(kos)
         if modules:
