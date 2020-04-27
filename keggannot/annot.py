@@ -375,7 +375,7 @@ class KEGGAnnotator(object):
         if kos:
             out["kos"] = kos
             out["ko_names"]=[]
-            out["ko_defs"]=[]
+            out["ko_defs"]=[] 
             for k in kos:
                 if k in self.kos.keys():
                     out["ko_names"].append(self.kos[k]["name"])
